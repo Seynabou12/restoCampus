@@ -57,6 +57,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $adresse;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -66,7 +71,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->email;
     }
-
     public function setEmail(string $email): self
     {
         $this->email = $email;
@@ -83,7 +87,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->email;
     }
-
+    
     /**
      * @deprecated since Symfony 5.3, use getUserIdentifier instead
      */
@@ -100,6 +104,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_RESPONSABLE';
 
         return array_unique($roles);
     }
@@ -190,6 +195,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }

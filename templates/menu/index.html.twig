@@ -9,8 +9,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Détails_menu</th>
-                <th>Nom_menu</th>
+                <th>DetailsMenu</th>
+                <th>NomMenu</th>
+                <th>Comment</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,8 +19,9 @@
         {% for menu in menus %}
             <tr>
                 <td>{{ menu.id }}</td>
-                <td>{{ menu.détailsMenu }}</td>
+                <td>{{ menu.detailsMenu }}</td>
                 <td>{{ menu.nomMenu }}</td>
+                <td>{{ menu.comment }}</td>
                 <td>
                     <a href="{{ path('menu_show', {'id': menu.id}) }}">show</a>
                     <a href="{{ path('menu_edit', {'id': menu.id}) }}">edit</a>
@@ -27,7 +29,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

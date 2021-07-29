@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WELCOM!
+{% endblock %}
+
+{% block body %}
+	<main
+		id="main">
+		<!-- End #main -->
+
+		<section id="gallery" class="gallery">
+
+			<div class="container" data-aos="fade-up">
+				<div class="section-title">
+					<h2>Photos</h2>
+					<p>Quelques photos des restaurants</p>
+				</div>
+			</div>
+
+			<div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+
+				<div class="row g-0">
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a href="assets/img/gallery/ucad3.jpg" class="gallery-lightbox" data-gall="gallery-item">
+								<img style="width:500px; height:200px;" src="assets/img/gallery/ucad3.jpg" alt="" class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a href="assets/img/gallery/ucad1.jpg" class="gallery-lightbox" data-gall="gallery-item">
+								<img style="width:500px; height:200px;" src="assets/img/gallery/ucad1.jpg" alt="" class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a href="assets/img/gallery/ucad2.jpg" class="gallery-lightbox" data-gall="gallery-item">
+								<img style="width:500px; height:200px;" src="assets/img/gallery/ucad2.jpg" alt="" class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a href="assets/img/gallery/ucad4.jpg" class="gallery-lightbox" data-gall="gallery-item">
+								<img style="width:500px; height:200px;" src="assets/img/gallery/ucad4.jpg" alt="" class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a href="assets/img/gallery/ucad5.jpg" class="gallery-lightbox" data-gall="gallery-item">
+								<img style="width:500px; height:200px;" src="assets/img/gallery/ucad1.jpg" alt="" class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a href="assets/img/gallery/ucad1.jpg" class="gallery-lightbox" data-gall="gallery-item">
+								<img style="width:500px; height:200px;" src="assets/img/gallery/ucad1.jpg" alt="" class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a href="assets/img/gallery/ucad4.jpg" class="gallery-lightbox" data-gall="gallery-item">
+								<img style="width:500px; height:200px;" src="assets/img/gallery/ucad4.jpg" alt="" class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4">
+						<div class="gallery-item">
+							<a href="assets/img/gallery/ucad2.jpg" class="gallery-lightbox" data-gall="gallery-item">
+								<img style="width:500px; height:200px;" src="assets/img/gallery/ucad2.jpg" alt="" class="img-fluid">
+							</a>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+
+		<!-- ======= Contact Section ======= -->
+		<section id="contact" class="contact">
+			<div class="container" data-aos="fade-up">
+
+				<div class="section-title">
+					<h2>Contact</h2>
+					<p>Contactez Nous</p>
+				</div>
+			</div>
+
+			<div data-aos="fade-up">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.378939237539!2d-17.47283248614428!3d14.691149989744844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec172891820e057%3A0x44c723c8e97e1dff!2sCit%C3%A9%20Universitaire!5e0!3m2!1sfr!2ssn!4v1627317375459!5m2!1sfr!2ssn" width="1500" height="350" style="border:2;" allowfullscreen="" loading="lazy"></iframe>
+			</div>
+			<div class="container" data-aos="fade-up">
+				<div class="row mt-5">
+					<div class="col-lg-4">
+						<div class="info">
+							<div class="address">
+								<i class="bi bi-geo-alt"></i>
+								<h4>LOCALISATION:</h4>
+								<p>Dakar, SENEGAL</p>
+							</div>
+							<br>
+							<div class="heure-ouverts">
+								<i class="bi bi-clock"></i>
+								<h4>Heures d'ouvertures:</h4>
+								<p>
+									Lundi-Dimanche:<br>
+									8:00 AM - 24:00 PM
+								</p>
+							</div>
+							<div class="email">
+								<i class="bi bi-envelope"></i>
+								<h4>Email:</h4>
+								<p>campusresto@example.com</p>
+							</div>
+							<div class="phone">
+								<i class="bi bi-phone"></i>
+								<h4>Téléphone:</h4>
+								<p>+221 781794521</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-8 mt-5 mt-lg-0">
+						<h6>BESOIN D'UN DEVIS, UNE QUESTION
+							<br>
+							Laissez-nous un message</h6>
+						<form action="forms/contact.php" method="post" role="form" class="php-email-form">
+							<div class="row">
+								<div class="col-md-6 form-group">
+									<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+								</div>
+								<div class="col-md-6 form-group mt-3 mt-md-0">
+									<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+								</div>
+							</div>
+							<div class="form-group mt-3">
+								<textarea class="form-control" name="message" rows="8" placeholder="Message" required></textarea>
+							</div>
+
+							<button class="btn bg-warning scrollto d-none d-lg-flex">ENVOYER</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Contact Section -->
+	</main>
+{% endblock %}

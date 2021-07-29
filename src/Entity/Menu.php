@@ -23,14 +23,10 @@ class Menu
     private $detailsMenu;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity=Restaurant::class, inversedBy="menu")
      */
-    private $nomMenu;
+    private $restaurant;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Plat::class, inversedBy="menus")
-     */
-    private $plats;
 
     public function getId(): ?int
     {
@@ -48,28 +44,16 @@ class Menu
 
         return $this;
     }
-
-    public function getNomMenu(): ?string
+    public function getRestaurant(): ?Restaurant
     {
-        return $this->nomMenu;
+        return $this->restaurant;
     }
 
-    public function setNomMenu(string $nomMenu): self
+    public function setRestaurant(?Restaurant $restaurant): self
     {
-        $this->nomMenu = $nomMenu;
+        $this->restaurant = $restaurant;
 
         return $this;
     }
 
-    public function getPlats(): ?Plat
-    {
-        return $this->plats;
-    }
-
-    public function setPlats(?Plat $plats): self
-    {
-        $this->plats = $plats;
-
-        return $this;
-    }
 }

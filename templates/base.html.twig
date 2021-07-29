@@ -5,14 +5,11 @@
 		<meta charset="utf-8">
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-		<title>Restaurantly Bootstrap Template - Inner Page</title>
+		<title>RestaurantsCampus</title>
 		<meta content="" name="description">
-		<meta
-		content="" name="keywords">
-
-		{# Run `composer require symfony/webpack-encore-bundle`
-																           and uncomment the following Encore helpers to start using Symfony UX #}
+		<meta content="" name="keywords">
 		{% block stylesheets %}
+		{% block name %}{% endblock %}
 			{#{{ encore_entry_link_tags('app') }}#}
 						<!-- Favicons -->
 			<link href="{{asset('assets/img/favicon.png')}}" rel="icon">
@@ -42,7 +39,7 @@
 
 				<div class="contact-info d-flex align-items-center">
 					<i class="bi bi-phone d-flex align-items-center">
-						<span>78 1794521</span>
+						<span>78 179 45 21</span>
 					</i>
 					<i class="bi bi-clock d-flex align-items-center ms-4">
 						<span>
@@ -58,7 +55,7 @@
 			<div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
 				<h1 class="logo me-auto me-lg-0">
-					<a href="index.html">RESTAURANTS</a>
+					<a href="{{path('app_home')}}">RESTAURANTS</a>
 				</h1>
 				<!-- Uncomment below if you prefer to use an image logo -->
 				<!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
@@ -66,26 +63,23 @@
 				<nav id="navbar" class="navbar order-last order-lg-0">
 					<ul>
 						<li>
-							<a class="nav-link scrollto " href="#">Acceuil</a>
+							<a class="nav-link scrollto " href="{{path('app_home')}}">Acceuil</a>
+						</li>
+						<li>
+							<a class="nav-link scrollto" href="#photos">Photos</a>
+						</li>
+						<li>
+							<a class="nav-link scrollto" href="{{ path('menu_index')}}">Menu</a>
 						</li>
 						<li>
 							<a class="nav-link scrollto" href="#">A propos</a>
 						</li>
 						<li>
-							<a class="nav-link scrollto" href="#">Menu</a>
-						</li>
-						<li>
-							<a class="nav-link scrollto" href="#">Specials</a>
-						</li>
-						<li>
 							<a class="nav-link scrollto" href="#">Events</a>
-						</li>
-						<li>
-							<a class="nav-link scrollto" href="#">Photos</a>
 						</li>
 						<li class="dropdown">
 							<a href="#">
-								<span>Restaurants</span>
+								<span>Restaurants de l'UCAD</span>
 								<i class="bi bi-chevron-down"></i>
 							</a>
 							<ul>
@@ -125,16 +119,16 @@
 			</div>
 		</header>
 		<!-- End Header -->
-		<section id="hero" class="d-flex align-items-center">
+		 <section id="hero" class="d-flex align-items-center">
 			<div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
 				<div class="row">
 					<div class="col-lg-8">
-						<h1>BIENVENUE A CAMPUS-RESTO</h1>
-						<h2>Service fondamental de la vie quotidienne des étudiants.</h2>
+						<h1>BIENVENU AU CAMPUS-RESTO</h1>
+						<h2>Service Fondamental de la Vie Quotidienne des Etudiants</h2>
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> 
 
 		<main id="main"> {% block body %}{% endblock %}
 			</main>

@@ -21,7 +21,7 @@ button {
 }
 
 .login-title h1 {
-    color: #00a8ff;
+    color: #f1c80f;
     font-size: 3.5rem;
     margin: 15px;
     margin-top: 30px;
@@ -36,17 +36,17 @@ button {
 .login-title p {
     font-size: 1.5rem;
     text-align: center;
-    color: gray;
+    color: white;
 }
 
 .login-form {
     grid-area: login-form;
     width: 400px;
-    height: 250px;
+    height: 200px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 20%);
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 40px;
     margin-bottom: 50px;
 }
 
@@ -87,11 +87,11 @@ button {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "login-img none";
-    margin: 0 120px;
+    margin: 0 100px;
 }
 
 .container-login-img-p p {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -128,9 +128,4 @@ button {
         margin-top: 10px;
         margin-bottom: 0;
     }
-
-    .nabou{
-        background-color: #fff;
-    }
-
 }

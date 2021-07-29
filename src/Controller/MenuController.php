@@ -3,17 +3,19 @@
 namespace App\Controller;
 
 use App\Entity\Menu;
-use App\Form\MenuType;
+use App\Entity\Plat;
+use App\Form\Menu1Type;
 use App\Repository\MenuRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-
+#[Route('/menu')]
 class MenuController extends AbstractController
 {
-    #[Route('/menu', name: 'menu_index', methods: ['GET'])]
+    #[Route('/', name: 'menu_index', methods: ['GET'])]
     public function index(MenuRepository $menuRepository): Response
     {
         return $this->render('menu/index.html.twig', [
@@ -21,39 +23,20 @@ class MenuController extends AbstractController
         ]);
     }
 
-    #[Route('/menu/new', name: 'menu_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
-    {
-        $menu = new Menu();
-        $form = $this->createForm(MenuType::class, $menu);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($menu);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('menu_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('menu/new.html.twig', [
-            'menu' => $menu,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/menu/{id}', name: 'menu_show', methods: ['GET'])]
-    public function show(Menu $menu): Response
-    {
+    #[Route('/show/{id}', name: 'menu_show', methods: ['GET'])]
+    public function show(Menu $menu, Request $request, EntityManagerInterface $em): Response
+    {    
+        
         return $this->render('menu/show.html.twig', [
             'menu' => $menu,
+        
         ]);
     }
 
-    #[Route('/menu/{id}/edit', name: 'menu_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'menu_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Menu $menu): Response
     {
-        $form = $this->createForm(MenuType::class, $menu);
+        $form = $this->createForm(Menu1Type::class, $menu);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -68,7 +51,7 @@ class MenuController extends AbstractController
         ]);
     }
 
-    #[Route('/menu/{id}', name: 'menu_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'menu_delete', methods: ['POST'])]
     public function delete(Request $request, Menu $menu): Response
     {
         if ($this->isCsrfTokenValid('delete'.$menu->getId(), $request->request->get('_token'))) {

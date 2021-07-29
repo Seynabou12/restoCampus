@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\PlatRepository;
+use App\Repository\RestaurantRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PlatRepository::class)
+ * @ORM\Entity(repositoryClass=RestaurantRepository::class)
  */
-class Plat
+class Restaurant
 {
     /**
      * @ORM\Id
@@ -27,16 +27,16 @@ class Plat
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $description;
+    private $lieu;
 
     /**
-     * @ORM\OneToMany(targetEntity=Menu::class, mappedBy="plats")
+     * @ORM\OneToMany(targetEntity=Menu::class, mappedBy="restaurant")
      */
-    private $menus;
+    private $menu;
 
     public function __construct()
     {
-        $this->menus = new ArrayCollection();
+        $this->menu = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -56,14 +56,14 @@ class Plat
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getLieu(): ?string
     {
-        return $this->description;
+        return $this->lieu;
     }
 
-    public function setDescription(string $description): self
+    public function setLieu(string $lieu): self
     {
-        $this->description = $description;
+        $this->lieu = $lieu;
 
         return $this;
     }
@@ -71,16 +71,16 @@ class Plat
     /**
      * @return Collection|Menu[]
      */
-    public function getMenus(): Collection
+    public function getMenu(): Collection
     {
-        return $this->menus;
+        return $this->menu;
     }
 
     public function addMenu(Menu $menu): self
     {
-        if (!$this->menus->contains($menu)) {
-            $this->menus[] = $menu;
-            $menu->setPlats($this);
+        if (!$this->menu->contains($menu)) {
+            $this->menu[] = $menu;
+            $menu->setRestaurant($this);
         }
 
         return $this;
@@ -88,10 +88,10 @@ class Plat
 
     public function removeMenu(Menu $menu): self
     {
-        if ($this->menus->removeElement($menu)) {
+        if ($this->menu->removeElement($menu)) {
             // set the owning side to null (unless already changed)
-            if ($menu->getPlats() === $this) {
-                $menu->setPlats(null);
+            if ($menu->getRestaurant() === $this) {
+                $menu->setRestaurant(null);
             }
         }
 

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interface Administateur{% endblock %}
+{% block body %}
+	<div class="container mt-4">
+		<div class="form-center">
+			<h2>Gerer les Responsables</h2>
+		</div>
+		<table class="table table-striped">
+			<tr>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Adresse</th>
+				<th>Telephone</th>
+			</tr>
+			{% for responsable in responsables %}
+				<tr>
+					<td>{{user.nom}}</td>
+					<td>{{user.prenom}}</td>
+					<td>{{user.adresse}}</td>
+                    <td>{{user.telephone}}</td>
+					<td>
+                    <a href="{{path('admin_edit', {'id': user.id})}}" onclick="return confirm('Etes vous sur de bien vouloir modifier ce Responsable'  )">
+							<i class="fas fa-trash"></i>
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}
