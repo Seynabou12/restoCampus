@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Plat{% endblock %}
+
+{% block body %}
+<section>
+<div class:"container-fluid container-xl d-flex align-items-center justify-content-lg-between" style="margin-top:100px;">
+    <h1>Créer</h1>
+    <div class="container mt-6">
+
+    {{ include('plats/_form.html.twig') }}
+    
+    <a href="{{ path('plats_index') }}">liste plats</a>
+</div>
+</div>
+</section>
+{% endblock %}

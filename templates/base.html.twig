@@ -12,6 +12,7 @@
 		{% block name %}{% endblock %}
 			{#{{ encore_entry_link_tags('app') }}#}
 						<!-- Favicons -->
+			<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 			<link href="{{asset('assets/img/favicon.png')}}" rel="icon">
 			<link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
@@ -69,45 +70,16 @@
 							<a class="nav-link scrollto" href="#photos">Photos</a>
 						</li>
 						<li>
-							<a class="nav-link scrollto" href="{{ path('menu_index')}}">Menu</a>
-						</li>
-						<li>
 							<a class="nav-link scrollto" href="#">A propos</a>
 						</li>
 						<li>
 							<a class="nav-link scrollto" href="#">Events</a>
-						</li>
-						<li class="dropdown">
-							<a href="#">
-								<span>Restaurants de l'UCAD</span>
-								<i class="bi bi-chevron-down"></i>
-							</a>
-							<ul>
-								<li> 
-									<a href="#">Resto Medical</a>
-								</li>
-								<li>
-									<a href="#">Resto Argentin</a>
-								</li>
-								<li>
-									<a href="#">Resto ESP</a>
-								</li>
-								<li>
-									<a href="#">Resto ENSEPT</a>
-								</li>
-								<li>
-									<a href="#">Resto Self</a>
-								</li>
-								<li>
-									<a href="#">Resto Central</a>
-								</li>
-								<li>
-									<a href="#">Resto FASTEF</a>
-								</li>
-							</ul>
-						</li>
 						<li>
 							<a class="nav-link scrollto" href="#contact">Contact</a>
+						</li>
+								<a class="nav-link scrollto" href="#">Events</a>
+						<li>
+							<a class="nav-link scrollto" href="{{ path('admin_index') }}">Admin</a>
 						</li>
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
@@ -119,7 +91,7 @@
 			</div>
 		</header>
 		<!-- End Header -->
-		 <section id="hero" class="d-flex align-items-center">
+		 {# <section id="hero" class="d-flex align-items-center">
 			<div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
 				<div class="row">
 					<div class="col-lg-8">
@@ -128,24 +100,23 @@
 					</div>
 				</div>
 			</div>
-		</section> 
+		</section>  #}
 
 		<main id="main"> {% block body %}{% endblock %}
 			</main>
 			<!-- ======= Footer ======= -->
 			<footer id="footer">
 				<div class="footer-top">
-					<div class="container">
+					<div class="container" style="height:30px">
 						<div class="row">
 							<div class="col-lg-4 col-md-6">
 								<div class="footer-info">
 									<h3>Restaurants</h3>
-									<p>
-										Dakar , SENEGAL<br><br>
-										<strong>Téléphone:</strong>
-										781794521<br>
-										<strong>Email:</strong>
-										restocampus@gmail.com<br>
+									 <p>Dakar , SENEGAL</p>
+									<p><strong>Téléphone:</strong>
+										781794521</p>
+									<p><strong>Email:</strong>
+										restocampus@gmail.com
 									</p>
 								</div>
 							</div>
@@ -168,7 +139,7 @@
 									</a>
 								</div>
 							</div>
-							<div class="col-lg-4 col-md-6 footer-newsletter">
+							<div class="col-lg-4 col-md-4 footer-newsletter">
 								<h4>Recevoir des Notifications</h4>
 								<form action="" method="post">
 									<input type="email" name="email"><input type="submit" value="Soumettre">

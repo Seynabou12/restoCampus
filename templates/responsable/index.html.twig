@@ -3,11 +3,12 @@
 {% block title %}Page d'administration
 {% endblock %}
 {% block body %}
-	<div class="container mt-4">
-		<div class="form-center">
+<section>
+<div class:"container-fluid container-xl d-flex align-items-center justify-content-lg-between" style="margin-top:100px;">
+		
 			<h2>Gerer les Responsables</h2>
-		</div>
-		<table class="table table-striped">
+      
+		 <table class="table" style="color:black; background-color:white">
 			<tr>
 				<th>Nom</th>
 				<th>Prenom</th>
@@ -28,6 +29,8 @@
 				</tr>
 			{% endfor %}
 		</table>
+		
 	</div>
+</section>
 {% endblock %}
 

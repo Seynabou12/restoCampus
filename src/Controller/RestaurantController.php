@@ -7,12 +7,15 @@ use App\Form\Menu1Type;
 use App\Entity\Restaurant;
 use App\Form\RestaurantType;
 use Doctrine\ORM\EntityManager;
+use App\Repository\MenuRepository;
+use App\Repository\PlatsRepository;
 use App\Repository\RestaurantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 #[Route('/restaurant')]
 class RestaurantController extends AbstractController
@@ -33,13 +36,12 @@ class RestaurantController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($restaurant);
-            $entityManager->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($restaurant);
+            $em->flush();
 
             return $this->redirectToRoute('restaurant_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('restaurant/new.html.twig', [
             'restaurant' => $restaurant,
             'form' => $form
@@ -47,7 +49,7 @@ class RestaurantController extends AbstractController
     }
 
     #[Route('/show/{id}', name: 'restaurant_show', methods: ['GET' , 'POST'])]
-    public function show(Restaurant $restaurant, Request $request, EntityManagerInterface $em, ): Response
+    public function show(Restaurant $restaurant, Request $request, EntityManagerInterface $em): Response
     {
         $menu = new Menu;
 
@@ -57,21 +59,34 @@ class RestaurantController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $menu->setRestaurant($restaurant);
-           
             $em->persist($menu);
             $em->flush();
 
-        return $this->redirectToRoute('restaurant_show', ['id' => $restaurant->getId()]);
+        return $this->redirectToRoute('menu_show', ['id' => $menu->getId()]);
        }
         return $this->render('restaurant/show.html.twig', [
             'restaurant' => $restaurant,
             'form' => $form ->createView()
-    
         ]);
-    
     }
 
-    #[Route('/{id}/edit', name: 'restaurant_edit', methods: ['GET', 'POST'])]
+    #[Route('/affiche/{id}' , name:'affiche_menu')]
+    public function affichage(Restaurant $restaurant, MenuRepository $menuRepository, PlatsRepository $platsRepository)
+    {
+        //pour récupérer tous les menus de chaque restaurant
+        $menu =  $restaurant->getMenu()->getValues()[0];
+         //dd($menu);
+        //$plats = $menu->getPlats()->getValues();
+        // dd($plats);
+        return $this->renderForm('restaurant/affichage.html.twig', [
+            'menu' => $menu,
+            'restaurant' => $restaurant,
+            //'plats' => $plats
+        ]);
+    }
+    
+   
+    #[Route('/edit/{id}', name: 'restaurant_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Restaurant $restaurant): Response
     {
         $form = $this->createForm(RestaurantType::class, $restaurant);
@@ -89,15 +104,15 @@ class RestaurantController extends AbstractController
         ]);
     }
 
-    #[Route('/delete/{id}', name: 'restaurant_delete', methods: ['POST'])]
-    public function delete(Request $request, Restaurant $restaurant): Response
+    
+   
+    #[Route('/delete/{id}', name: 'restaurant_delete')]
+    public function delete(Restaurant $restaurant): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$restaurant->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($restaurant);
-            $entityManager->flush();
-        }
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($restaurant);
+            $em->flush();
 
-        return $this->redirectToRoute('restaurant_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('restaurant_index');
     }
 }

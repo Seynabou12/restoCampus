@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plats index
+{% endblock %}
+
+{% block body %}
+	<section>
+     <div class="container-fluid" style="margin-top:50px; color:white;">
+			<h1>Plats</h1>
+                <div class="col-md-4" style="background-color:white">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>NomPlat</th>
+							<th>Description</th>
+							<th>actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for plat in plats %}
+							<tr>
+								<td>{{ plat.id }}</td>
+								<td>{{ plat.nomPlats }}</td>
+								<td>{{ plat.description }}</td>
+								<td>
+									<a href="{{ path('plats_edit', {'id': plat.id}) }}">Modifier</a>
+									<a href="{{ path('plats_delete', {'id': plat.id}) }}">Supprimer</a>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="4">no records found</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				</div>
+		</div>
+        <a href="{{ path('plats_new') }}">Create new</a>
+	</section>
+	{#  ajouter des étoiles sur son site internet
+			    <div class="stars">
+					<i class="lar la-star" data-value="1"></i>
+					<i class="lar la-star" data-value="2"></i>
+					<i class="lar la-star" data-value="3"></i>
+					<i class="lar la-star" data-value="4"></i>
+					<i class="lar la-star" data-value="5"></i>
+				</div>
+			     <input type="text" name="note" id="note" value="0"> #}
+{% endblock %}

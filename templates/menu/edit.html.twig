@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Menu{% endblock %}
+{% block title %}Edit Menu
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Menu</h1>
+	<section>
+		<div class="container-fluid" style="margin-top:50px;">
 
-    {{ include('menu/_form.html.twig', {'button_label': 'Update'}) }}
+			<h1>Modifier le Menu</h1>
 
-    <a href="{{ path('menu_index') }}">back to list</a>
+			{{ include('menu/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('menu/_delete_form.html.twig') }}
+			<a href="{{ path('menu_index') }}">back to list</a>
+
+			{{ include('menu/_delete_form.html.twig') }}
+		</div>
+	</section>
 {% endblock %}

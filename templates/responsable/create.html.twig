@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<section>
+		<div class:"container-fluid container-xl d-flex align-items-center justify-content-lg-between" style="margin-top:100px">
+			<div class="container mt-6">
+				<h1>Creation de formulaire</h1>
+				{{ form_start(form) }}
+				<div class="container w-50 h-50 bg-white text-black">
+					<div class="form-group">
+						{{ form_widget(form) }}
+					</div>
+					<br>
+					<button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</section>
+	
+{% endblock %}

@@ -1,34 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Menu{% endblock %}
+{% block title %}Menu
+{% endblock %}
 
 {% block body %}
-    <h1>Menu</h1>
+	<h1>Menu</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ menu.id }}</td>
-            </tr>
-            <tr>
-                <th>DetailsMenu</th>
-                <td>{{ menu.detailsMenu }}</td>
-            </tr>
-            <tr>
-                <th>NomMenu</th>
-                <td>{{ menu.nomMenu }}</td>
-            </tr>
-            <tr>
-                <th>Comment</th>
-                <td>{{ menu.comment }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ menu.id }}</td>
+			</tr>
+			<tr>
+				<th>DetailsMenu</th>
+				<td>{{ menu.detailsMenu }}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="container">
 
-    <a href="{{ path('menu_index') }}">back to list</a>
+		<h1>Créer un Nouveau Plats</h1>
+		{{ include('plats/_form.html.twig') }}
 
-    <a href="{{ path('menu_edit', {'id': menu.id}) }}">edit</a>
+		<a href="{{ path('plats_index') }}">Liste des plats</a>
 
-    {{ include('menu/_delete_form.html.twig') }}
+	</div>
+	<a href="{{ path('menu_index') }}">Liste des menus</a>
+
+	<a href="{{ path('menu_edit', {'id': menu.id}) }}">Modifier</a>
+
+	{{ include('menu/_delete_form.html.twig') }}
 {% endblock %}

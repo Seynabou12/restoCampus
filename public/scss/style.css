@@ -107,7 +107,7 @@ button {
 
     .container-login-img-p p {
         margin-top: 0px;
-        margin-bottom: 10px;
+        margin-bottom: 6px;
         font-size: 1.2rem;
     }
 
@@ -125,7 +125,7 @@ button {
     }
     
     .login-form {
-        margin-top: 10px;
-        margin-bottom: 0;
+        margin-top: 5px;
+        margin-bottom: 2px;
     }
 }

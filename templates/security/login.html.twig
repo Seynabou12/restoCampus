@@ -40,17 +40,13 @@
 
 {% block body %}
 	<section>
-		<div class="container-fluid" style="text-align:center; margin-top:50px">
-			 <h2>BIENVENU</h2>
-			     <p>Service fondamental de la vie quotidienne des étudiants</p>
-		</div>
 		<div class="container">
 			<div class="container-login">
 				<div class="login-title">
 					<h1>CAMPUS-RESTO</h1>
 					<div class="container-login-img-p">
 						<div class="login-img">
-							<img src="image/respo.jpeg" style="width:200px; height:200px" alt="">
+							<img src="image/respo.jpeg" style="width:200px; height:200px;" alt="">
 						</div>
 					</div>
 				</div>
@@ -68,9 +64,11 @@
 							</div>
 						{% endif %}
 						<div class="form-row">
+							<label for="email"><strong> Votre Adresse Email</strong></label>
 							<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
 						</div>
 						<div class="form-row">
+							<label for="password"><strong>Votre Mot de Passe</strong></label>
 							<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 						</div>
 						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">

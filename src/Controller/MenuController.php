@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Menu;
 use App\Entity\Plat;
+use App\Entity\Plats;
 use App\Form\Menu1Type;
+use App\Form\PlatsType;
 use App\Repository\MenuRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,13 +25,26 @@ class MenuController extends AbstractController
         ]);
     }
 
-    #[Route('/show/{id}', name: 'menu_show', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'menu_show', methods: ['GET' , 'POST'])]
     public function show(Menu $menu, Request $request, EntityManagerInterface $em): Response
     {    
+        $plat = new Plats;
         
+        $form = $this->createForm(PlatsType::class, $plat);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $plat->setMenu($menu);
+            $em->persist($plat);
+            $em->flush();
+            
+            return $this->redirectToRoute('plats_index', ['id' => $menu->getPlats()]);
+       
+        }
         return $this->render('menu/show.html.twig', [
             'menu' => $menu,
-        
+            'plats' => $plat,
+            'form' => $form ->createView(),
         ]);
     }
 
@@ -52,14 +67,13 @@ class MenuController extends AbstractController
     }
 
     #[Route('/delete/{id}', name: 'menu_delete', methods: ['POST'])]
-    public function delete(Request $request, Menu $menu): Response
+    public function delete(Menu $menu): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$menu->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($menu);
-            $entityManager->flush();
-        }
+        
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($menu);
+            $em->flush();
 
-        return $this->redirectToRoute('menu_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('menu_index');
     }
 }

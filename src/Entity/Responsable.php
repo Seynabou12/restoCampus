@@ -42,6 +42,11 @@ class Responsable
      */
     private $created_at;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Restaurant::class, cascade={"persist", "remove"})
+     */
+    private $restaurant;
+
     public function __construct()
     {
         $this->created_at = new \DateTime();
@@ -108,6 +113,18 @@ class Responsable
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getRestaurant(): ?Restaurant
+    {
+        return $this->restaurant;
+    }
+
+    public function setRestaurant(?Restaurant $restaurant): self
+    {
+        $this->restaurant = $restaurant;
 
         return $this;
     }
