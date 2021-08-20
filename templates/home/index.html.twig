@@ -25,10 +25,7 @@
 			</div>
 		</section>
 
-		<section>
-		
-
-		</section>
+		<section></section>
 
 		<section id="why-us" class="why-us">
 			<div class="container" data-aos="fade-up">
@@ -44,12 +41,12 @@
 								<h4>{{ restaurant.lieu}}</h4>
 								<p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
 								<div class="text-center">
-								    <a href="{{path('affiche_menu' , { id : restaurant.id })}}" class="book-a-table-btn scrollto d-none d-lg-flex">Afficher Menu</a>
+									<a href="{{path('affiche_menu' , { id : restaurant.id })}}" class="book-a-table-btn scrollto d-none d-lg-flex">Afficher Menu</a>
 								</div>
 							</div>
 						</div>
 					{% endfor %}
-				
+
 				</div>
 			</div>
 		</section>
@@ -127,6 +124,28 @@
 				</div>
 			</div>
 		</section>
+		{# <section id="why-us" class="why-us">
+			<div class="container" data-aos="fade-up">
+				<div class="section-title">
+					<h2>Chefs</h2>
+					<p>Responsable des restaurants</p>
+				</div>
+				<div class="row">
+					{% for responsable in responsables %}
+						<div class="col-lg-4 mb-4">
+							<div class="box" data-aos="zoom-in" data-aos-delay="100">
+								<span>{{ restaurant.nom }}</span>
+								<h4>{{ restaurant.prenom}}</h4>
+								<h4>{{ restaurant.telephone}}</h4>
+								<p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+							</div>
+						</div>
+					{% endfor %}
+
+				</div>
+			</div>
+		</section> #}
+
 		<!-- ======= Contact Section ======= -->
 		<section id="contact" class="contact">
 			<div class="container" data-aos="fade-up">
@@ -170,26 +189,26 @@
 						</div>
 					</div>
 					{# <div class="col-lg-8 mt-5 mt-lg-0">
-						<h6>BESOIN D'UN DEVIS, UNE QUESTION
-							<br>
-							Laissez-nous un message</h6>
-						<form action="forms/contact.php" method="post" role="form" class="php-email-form">
-							<div class="row">
-								<div class="col-md-6 form-group">
-									<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-								</div>
-								<div class="col-md-6 form-group mt-3 mt-md-0">
-									<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-								</div>
-							</div>
-							<div class="form-group mt-3">
-								<textarea class="form-control" name="message" rows="8" placeholder="Message" required></textarea>
-							</div>
-							<button>
-								<a href="{{path('app_home')}}">ENVOYER</a>
-							</button>
-						</form>
-					</div> #}
+											<h6>BESOIN D'UN DEVIS, UNE QUESTION
+												<br>
+												Laissez-nous un message</h6>
+											<form action="forms/contact.php" method="post" role="form" class="php-email-form">
+												<div class="row">
+													<div class="col-md-6 form-group">
+														<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+													</div>
+													<div class="col-md-6 form-group mt-3 mt-md-0">
+														<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+													</div>
+												</div>
+												<div class="form-group mt-3">
+													<textarea class="form-control" name="message" rows="8" placeholder="Message" required></textarea>
+												</div>
+												<button>
+													<a href="{{path('app_home')}}">ENVOYER</a>
+												</button>
+											</form>
+										</div> #}
 				</div>
 			</div>
 		</section>

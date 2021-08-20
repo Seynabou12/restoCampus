@@ -34,8 +34,7 @@ class CommentType extends AbstractType
                 'label' => 'Message',
                 'attr' => [
                 'class' => 'form-control'
-                ]])
-                ;
+                ]]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

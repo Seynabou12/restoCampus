@@ -59,16 +59,17 @@ class PlatsController extends AbstractController
 
         //traitement du formulaire
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+            
+            $comment->setCreatedAt(new \DateTime('now'));
+            $comment->setPlat($plat);
+            //dd($comment);
 
-        
-           //$comment->setCreatedAt(new DateTime());
-           $comment->setPlat($plat);
-           //dd($comment);
-           
-           //$annonce->addComment($comment);
+            $em = $this->getDoctrine()->getManager();
             $em->persist($comment);
             $em->flush();
-   
+
+            
+            $this->addFlash('message', 'votre commentaire a bien été envoyé');
             return $this->redirectToRoute('plats_show', ['id' => $plat->getId()]);
         }
     
@@ -77,7 +78,7 @@ class PlatsController extends AbstractController
             'commentForm' => $commentForm->createView()
         ]);
     }
-
+   
     #[Route('/{id}/edit', name: 'plats_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Plats $plat): Response
     {

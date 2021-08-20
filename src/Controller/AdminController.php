@@ -15,8 +15,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminController extends AbstractController
 {
-   
-
     public function __construct(ResponsableRepository $responsableRepository)
     {
     
@@ -52,6 +50,7 @@ class AdminController extends AbstractController
             'responsable'=>$responsable
             ]);
     }
+
     #[Route('admin/delete/{id}', name:'admin_delete')]
     public function delete(Responsable $responsable,EntityManagerInterface $em)
     {

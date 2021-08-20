@@ -38,7 +38,7 @@ class Comment
     private $message;
 
     /**
-     * @ORM\Column(type="datetime" , nullable= true)
+     * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
@@ -101,17 +101,12 @@ class Comment
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    /**
-     * @ORM\PrePersist
-     * @ORM\PreUpdate
-     */
-    
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 

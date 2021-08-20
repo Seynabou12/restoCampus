@@ -16,12 +16,12 @@ class ResponsableType extends AbstractType
             ->add('nom', TextType::class, [
                 'attr' => [
                     'class' => "form-control" , 
-                    'placeholder' => "saisir votre nom"]
+                    'placeholder' => "votre nom"]
             ])
             ->add('prenom', TextType::class, [
                 'attr' => [
                     'class' => "form-control",
-                    'placeholder' => "saisir votre prenom"]
+                    'placeholder' => "votre prenom"]
             ])
             ->add('adresse', TextType::class, [
                 'attr' => [
