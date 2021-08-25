@@ -34,6 +34,8 @@ class Restaurant
      */
     private $menu;
 
+
+
     public function __construct()
     {
         $this->menu = new ArrayCollection();
@@ -97,4 +99,5 @@ class Restaurant
 
         return $this;
     }
+
 }

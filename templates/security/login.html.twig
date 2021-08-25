@@ -64,18 +64,18 @@
 							</div>
 						{% endif %}
 						<div class="form-row">
-							<label for="email"><strong> Votre Adresse Email</strong></label>
+							<label for="email"><strong> Votre Email</strong></label>
 							<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
 						</div>
 						<div class="form-row">
-							<label for="password"><strong>Votre Mot de Passe</strong></label>
+							<label for="password"><strong>Votre Password</strong></label>
 							<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 						</div>
 						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 						<div class="form-button">
-							<button class="btn btn-lg btn-primary" type="submit">
-								<a href="{{path('admin_index')}}"> Connecter</a>
+							<button  class="book-a-table-btn scrollto d-none d-lg-flex" style="background-color:black;" type="submit">
+								<a href="{{path('app_home')}}"> Connecter</a>
 							</button>
 						</div>
 					</form>

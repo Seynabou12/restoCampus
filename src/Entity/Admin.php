@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ResponsableRepository;
+use App\Repository\AdminRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ResponsableRepository::class)
+ * @ORM\Entity(repositoryClass=AdminRepository::class)
  */
-class Responsable
+class Admin
 {
     /**
      * @ORM\Id
@@ -30,7 +32,7 @@ class Responsable
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $adresse;
+    private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -38,28 +40,18 @@ class Responsable
     private $telephone;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $created_at;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Restaurant::class, cascade={"persist", "remove"})
-     */
-    private $restaurant;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
-    private $email;
+    private $adresse;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="responsable")
+     * @ORM\OneToMany(targetEntity=Responsable::class, mappedBy="admin")
      */
-    private $admin;
+    private $responsable;
 
     public function __construct()
     {
-        $this->created_at = new \DateTime();
+        $this->responsable = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -91,14 +83,14 @@ class Responsable
         return $this;
     }
 
-    public function getAdresse(): ?string
+    public function getEmail(): ?string
     {
-        return $this->adresse;
+        return $this->email;
     }
 
-    public function setAdresse(string $adresse): self
+    public function setEmail(string $email): self
     {
-        $this->adresse = $adresse;
+        $this->email = $email;
 
         return $this;
     }
@@ -115,50 +107,44 @@ class Responsable
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getAdresse(): ?string
     {
-        return $this->created_at;
+        return $this->adresse;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setAdresse(string $adresse): self
     {
-        $this->created_at = $created_at;
+        $this->adresse = $adresse;
 
         return $this;
     }
 
-    public function getRestaurant(): ?Restaurant
+    /**
+     * @return Collection|Responsable[]
+     */
+    public function getResponsable(): Collection
     {
-        return $this->restaurant;
+        return $this->responsable;
     }
 
-    public function setRestaurant(?Restaurant $restaurant): self
+    public function addResponsable(Responsable $responsable): self
     {
-        $this->restaurant = $restaurant;
+        if (!$this->responsable->contains($responsable)) {
+            $this->responsable[] = $responsable;
+            $responsable->setAdmin($this);
+        }
 
         return $this;
     }
 
-    public function getEmail(): ?string
+    public function removeResponsable(Responsable $responsable): self
     {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getAdmin(): ?Admin
-    {
-        return $this->admin;
-    }
-
-    public function setAdmin(?Admin $admin): self
-    {
-        $this->admin = $admin;
+        if ($this->responsable->removeElement($responsable)) {
+            // set the owning side to null (unless already changed)
+            if ($responsable->getAdmin() === $this) {
+                $responsable->setAdmin(null);
+            }
+        }
 
         return $this;
     }

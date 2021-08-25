@@ -4,16 +4,17 @@
 {% endblock %}
 {% block body %}
 <section>
-<div class:"container-fluid container-xl d-flex align-items-center justify-content-lg-between" style="margin-top:100px;">
+<div class:"container d-flex align-items-center justify-content-lg-between" style="margin-top:100px;">
 		
 			<h2>Gerer les Responsables</h2>
       
-		 <table class="table" style="color:black; background-color:white">
+		 <table class="table mt-8" style="color:black; background-color:white">
 			<tr>
 				<th>Nom</th>
 				<th>Prenom</th>
 				<th>Adresse</th>
 				<th>Telephone</th>
+				<th>Email</th>
 			</tr>
 			{% for responsable in responsables %}
 				<tr>
@@ -21,15 +22,16 @@
 					<td>{{responsable.prenom}}</td>
 					<td>{{responsable.adresse}}</td>
                     <td>{{responsable.telephone}}</td>
+					 <td>{{responsable.email}}</td>
 					<td>
                     <a href="{{path('admin_edit', {'id': responsable.id})}}" onclick="return confirm('Etes vous sur de bien vouloir modifier ce Responsable'  )">
 							<i class="fas fa-trash"></i>
+							<i class="fas fa-edit"></i>
 						</a>
 					</td>
 				</tr>
 			{% endfor %}
 		</table>
-		
 	</div>
 </section>
 {% endblock %}

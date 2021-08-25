@@ -33,6 +33,11 @@ class ResponsableType extends AbstractType
                     'class' => "form-control",
                     'placeholder' => "votre numéro téléphone"]
             ])
+            ->add('email', TextType::class, [
+                'attr' => [
+                    'class' => "form-control" ,
+                    'placeholder' => "votre email"]
+            ])
             ->add('created_at')
         ;
     }

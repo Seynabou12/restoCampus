@@ -48,6 +48,11 @@ class Comment
      */
     private $plat;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $notes;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,6 +126,18 @@ class Comment
     public function setPlat(?Plats $plat): self
     {
         $this->plat = $plat;
+
+        return $this;
+    }
+
+    public function getNotes(): ?int
+    {
+        return $this->notes;
+    }
+   
+    public function setNotes(int $notes): self
+    {
+        $this->notes = $notes;
 
         return $this;
     }
